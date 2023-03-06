@@ -135,5 +135,71 @@ body {
 /*INICIO MAIN*/
 
 .main__hero {
-
+    background-image: url(../img/fondo-hero.jfif);
+    background-attachment: fixed;
+    object-fit: cover;
 }
+
+.main__hero__contenedor {
+    background-color: rgba(31,33,36,0.95);  /*rgba(12,24,28);*/
+    margin: 0 20rem;
+}
+
+.main__hero__contenedor h1 {
+    text-align: center;
+    padding: 1rem 0;
+    color: white;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.main__hero__contenedor__texto p {
+    color: white;
+    font-weight: 200;
+    font-size: 1.25rem;
+    padding: 0 6rem;
+    text-align: center;
+}
+
+.main__hero__contenedor__texto {
+    padding-bottom: 0.2rem;
+}
+
+.main__hero__contenedor__carrusel {
+    margin-left: 25rem;
+    width: 30rem;
+}
+
+.main__hero__carrusel__contenedor__item {
+    margin-left: 5.4rem;
+}
+
+.main__hero__carrusel__contenedor__item img {
+    -webkit-animation: shadow-drop-br 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: shadow-drop-br 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+
+/*ANIMACIONES*/
+
+@-webkit-keyframes shadow-drop-br {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+              box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+      -webkit-box-shadow: 12px 12px 20px -12px rgba(0, 0, 0, 0.35);
+              box-shadow: 12px 12px 20px -12px rgba(0, 0, 0, 0.35);
+    }
+  }
+  @keyframes shadow-drop-br {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+              box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+      -webkit-box-shadow: 12px 12px 20px -12px rgba(0, 0, 0, 0.35);
+              box-shadow: 12px 12px 20px -12px rgba(0, 0, 0, 0.35);
+    }
+  }
