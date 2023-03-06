@@ -1,0 +1,139 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    /* El "*" engloba a todo el documento, esos parametros son los necesarios para el reset */
+    padding: 0;
+    box-sizing: border-box; }
+
+body {
+    background-color: #1f2124;
+}
+
+.header__nav {
+    padding: 0.25rem 20rem;
+    background-color: #0c181c;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__nav__title {
+    color: white;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+}  
+
+.header__nav__title:hover {
+    color: white;
+}
+
+.header__nav__links {
+    padding-left: 18rem;
+}
+
+.header__nav__links__item a {
+    color: white;
+    margin: 0 0.75rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.header__nav__links__item a:hover {
+    color: goldenrod;
+    font-weight: 200;
+    transition: 0.5s;
+}
+
+.header__nav__links__btn {
+    position: relative;
+    display: inline-block;
+    padding: 10px 40px;
+    color: white;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.4s;
+    border-radius: 0.5rem;
+}
+
+.header__nav__links__btn {
+    color: white;
+}
+
+.header__nav__links__btn:hover {
+    background: goldenrod;
+    box-shadow: 0 0 10px goldenrod, 0 0 40px goldenrod, 0 0 80px goldenrod;
+    transition-delay: 1s;
+}
+
+.header__nav__links__btn span {
+    position: absolute;
+    display: block;
+}
+
+.span1 {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,transparent,goldenrod);
+}
+
+.header__nav__links__btn:hover .span1 {
+    left: 100%;
+    transition: 1s;
+}
+
+.span3 {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg,transparent,goldenrod);
+}
+
+.header__nav__links__btn:hover .span3 {
+    right: 100%;
+    transition: 1s;
+    transition-delay: 0.5s;
+}
+
+.span2 {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg,transparent,goldenrod);
+}
+
+.header__nav__links__btn:hover .span2 {
+    top: 100%;
+    transition: 1s;
+    transition-delay: 0.25s;
+}
+
+.span4 {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg,transparent,goldenrod);
+}
+
+.header__nav__links__btn:hover .span4 {
+    bottom: 100%;
+    transition: 1s;
+    transition-delay: 0.75s;
+}
+
+/*FIN HEADER*/
+
+/*INICIO MAIN*/
+
+.main__hero {
+
+}

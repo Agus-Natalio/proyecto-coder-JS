@@ -1,0 +1,27 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  /* El "*" engloba a todo el documento, esos parametros son los necesarios para el reset */
+  padding: 0;
+  box-sizing: border-box; }
+
+.header__nav {
+  padding: 0 10rem;
+}
+
+.header__nav__as {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 39px; 
+  -webkit-transition: 0.5s ease;
+          transition: 0.5s ease;
+}
+
+.header__nav__as:hover {
+  color: white;
+  border-bottom: 3px solid white;   
+  -webkit-transition: 0.5s ease;
+          transition: 0.5s ease;
+  margin-left: 9px;
+}

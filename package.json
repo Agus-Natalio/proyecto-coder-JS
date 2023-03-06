@@ -1,0 +1,25 @@
+{
+  "name": "proyectojs",
+  "version": "1.0.0",
+  "description": "Paquete node para compilar SCSS a CSS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "node-sass --include-path scss sass/main.scss css/compilado.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Agus-Natalio/proyecto-coder-JS.git"
+  },
+  "author": "Agustin Natalio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Agus-Natalio/proyecto-coder-JS/issues"
+  },
+  "homepage": "https://github.com/Agus-Natalio/proyecto-coder-JS#readme",
+  "devDependencies": {
+    "node-sass": "^8.0.0",
+    "nodemon": "^2.0.21"
+  }
+}
