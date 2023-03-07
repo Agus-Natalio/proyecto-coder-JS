@@ -37,6 +37,7 @@ body {
     color: white;
     margin: 0 0.75rem;
     font-weight: 500;
+    font-size: 1.05rem;
     text-decoration: none;
 }
 
@@ -57,7 +58,7 @@ body {
     text-decoration: none;
     overflow: hidden;
     transition: 0.4s;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
 }
 
 .header__nav__links__btn {
@@ -141,7 +142,7 @@ body {
 }
 
 .main__hero__contenedor {
-    background-color: rgba(31,33,36,0.95);  /*rgba(12,24,28);*/
+    background-color: rgba(12,24,28,0.95);
     margin: 0 20rem;
 }
 
@@ -159,6 +160,7 @@ body {
     font-size: 1.25rem;
     padding: 0 6rem;
     text-align: center;
+    letter-spacing: 1px;
 }
 
 .main__hero__contenedor__texto {
