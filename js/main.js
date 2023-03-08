@@ -13,6 +13,10 @@ let ingresoDelAlumno = parseFloat(prompt(Ingrese el valor de la siguiente operac
 
 let verdadero = ingresoDelAlumno == resultSuma;
 
+let resultSuma = 10
+
+let ingresoDelAlumno = parseFloat(prompt("Ingrese el resultado de la siguiente operacion: 2 * 5"))
+
 console.log(verdadero);
 
 if(verdadero) {

@@ -61,10 +61,6 @@ body {
     border-radius: 0.25rem;
 }
 
-.header__nav__links__btn {
-    color: white;
-}
-
 .header__nav__links__btn:hover {
     background: goldenrod;
     box-shadow: 0 0 10px goldenrod, 0 0 40px goldenrod, 0 0 80px goldenrod;
@@ -172,19 +168,36 @@ body {
     width: 30rem;
 }
 
-.main__hero__carrusel__contenedor__item {
+.main__hero__contenedor__carrusel__item {
     margin-left: 5.4rem;
 }
 
-.main__hero__carrusel__contenedor__item img {
+.main__hero__contenedor__carrusel__item img {
     -webkit-animation: shadow-drop-br 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: shadow-drop-br 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.main__books__fila {
+    -webkit-animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.main__books__fila img {
+    width: 12rem;
+}
+
+.main__books__fila p {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding-top: 0.5rem;
 }
 
 
 
 /*ANIMACIONES*/
 
+/*Box Shadow*/
 @-webkit-keyframes shadow-drop-br {
     0% {
       -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
@@ -205,3 +218,26 @@ body {
               box-shadow: 12px 12px 20px -12px rgba(0, 0, 0, 0.35);
     }
   }
+
+  /*Slide-forward*/
+  @-webkit-keyframes slide-fwd-center {
+    0% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+    }
+    100% {
+      -webkit-transform: translateZ(160px);
+              transform: translateZ(160px);
+    }
+  }
+  @keyframes slide-fwd-center {
+    0% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+    }
+    100% {
+      -webkit-transform: translateZ(160px);
+              transform: translateZ(160px);
+    }
+  }
+  
