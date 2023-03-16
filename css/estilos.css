@@ -1,5 +1,5 @@
 * {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     /* El "*" engloba a todo el documento, esos parametros son los necesarios para el reset */
     padding: 0;
@@ -133,7 +133,6 @@ body {
 
 .main__hero {
     background-image: url(../img/fondo-hero.jfif);
-    background-attachment: fixed;
     object-fit: cover;
 }
 
@@ -145,6 +144,7 @@ body {
 .main__hero__contenedor h1 {
     text-align: center;
     padding: 1rem 0;
+    font-size: 2.4rem;
     color: white;
     letter-spacing: 2px;
     font-weight: bold;
@@ -153,7 +153,7 @@ body {
 .main__hero__contenedor__texto p {
     color: white;
     font-weight: 200;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     padding: 0 6rem;
     text-align: center;
     letter-spacing: 1px;
@@ -177,13 +177,22 @@ body {
     animation: shadow-drop-br 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-.main__books__fila {
-    -webkit-animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+.main__books h2 {
+    color: white;
+    margin-top: .5rem;
+    margin-left: 21rem;
+    font-size: 1.5rem;
 }
 
 .main__books__fila img {
     width: 12rem;
+    -webkit-animation: shadow-drop-br 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: shadow-drop-br 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.main__books__fila img:hover {
+    -webkit-animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.45s reverse both;
+    animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.45s reverse both;
 }
 
 .main__books__fila p {
@@ -193,7 +202,56 @@ body {
     padding-top: 0.5rem;
 }
 
+video {
+    width: 100%;
+}
 
+.main__log__absolute {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    position: absolute;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__log__absolute h1 {
+    font-size: 80px;
+    font-weight: 900;
+    font-family: antorian;
+    z-index: 100;
+    color: #fff;
+    margin-bottom: 30px;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 1rem;
+    border-radius: 0.6rem;
+}
+
+.main__log__absolute h1::after {
+    display: block;
+    width: 30%;
+    height: 10px;
+    margin: auto;
+    background: #ffffff;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+
+/*FONTS*/
+
+@font-face {
+    font-family: antorian;
+    src: url(../img/Antorian-l4KV.ttf);
+}
 
 /*ANIMACIONES*/
 
@@ -238,6 +296,32 @@ body {
     100% {
       -webkit-transform: translateZ(160px);
               transform: translateZ(160px);
+    }
+  }
+
+/*Fade-In*/
+@-webkit-keyframes fade-in-bottom {
+    0% {
+      -webkit-transform: translateY(50px);
+              transform: translateY(50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in-bottom {
+    0% {
+      -webkit-transform: translateY(50px);
+              transform: translateY(50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
     }
   }
   
