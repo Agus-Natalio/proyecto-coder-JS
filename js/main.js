@@ -72,6 +72,8 @@ if (confirmacion != claveUsuario){
             break;
         }
     }
+}else{
+    ingreso = true;
 }
 
 if (ingreso) {
