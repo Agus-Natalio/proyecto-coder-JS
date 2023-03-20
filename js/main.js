@@ -78,7 +78,7 @@ if (confirmacion != claveUsuario){
 if (ingreso) {
     alert("Bienvenido a Books of Norion "+ nombreUsuario +"!");
     let suma = 0;
-    let menu = prompt("Los siguientes libros se encuentran en stock:\n1- Folgstagt el Eterno // Precio: 4300\n2- La Piramide Negras // Precio: 4000\n3- Los Exiliados // Precio:3200\nIngresa 0 para finalizar la sesion");
+    let menu = prompt("Los siguientes libros se encuentran en stock:\n1- Folgstagt el Eterno // Precio: 4300\n2- La Piramide Negra // Precio: 4000\n3- Los Exiliados // Precio:3200\nIngresa 0 para finalizar la sesion");
     while (menu != 0){
         switch (menu) {
             case "1":
@@ -99,7 +99,7 @@ if (ingreso) {
             default:
                 alert ("Ingreso no admitido");
         }
-        menu = prompt("Los siguientes libros se encuentran en stock:\n1- Folgstagt el Eterno // Precio: 4300\n2- La Piramide Negras // Precio: 4000\n3- Los Exiliados // Precio:3200\nIngresa 0 para finalizar la sesion");
+        menu = prompt("Los siguientes libros se encuentran en stock:\n1- Folgstagt el Eterno // Precio: 4300\n2- La Piramide Negra // Precio: 4000\n3- Los Exiliados // Precio:3200\nIngresa 0 para finalizar la sesion");
     }
     if (suma != 0){
         alert("Debes pagar una suma de $"+suma+".\nHemos enviado el recibo a "+mailUsuario+"\nDisfruta tus libros!")
