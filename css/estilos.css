@@ -225,7 +225,7 @@ video {
     z-index: 100;
     color: #fff;
     margin-bottom: 30px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 1rem;
     border-radius: 0.6rem;
 }
