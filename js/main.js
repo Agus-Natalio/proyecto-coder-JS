@@ -132,8 +132,10 @@ if (ingreso) {
                 break;  
             case '2':
                 if(carrito != null){
-                    for (let i=0; i < carrito.length; i++){
-                        suma += carrito[i].price;
+                    if (suma == 0) {
+                        for (let i=0; i < carrito.length; i++){
+                            suma += carrito[i].price;
+                        }
                     }
                     alert("Tienes un total de $"+suma+" acumulado en el carrito");         
                 }else{
