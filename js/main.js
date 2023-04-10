@@ -137,7 +137,7 @@ if (ingreso) {
                             suma += carrito[i].price;
                         }
                     }
-                    alert("Tienes un total de $"+suma+" acumulado en el carrito");         
+                alert("Tienes un total de $"+suma+" acumulado en el carrito");         
                 }else{
                     alert("Aun no hay libros en el carrito :(");
                 }
@@ -154,6 +154,11 @@ if (ingreso) {
         }
     }
     if(carrito.length){
+        if (suma == 0) {
+            for (let i=0; i < carrito.length; i++){
+                suma += carrito[i].price;
+            }
+        }
         alert("Ha pagado un total de $"+suma+"\nSe ha enviado el comprobante de pago a "+user.mail);
     }else{
         alert("Te fuiste sin comprar :(");
