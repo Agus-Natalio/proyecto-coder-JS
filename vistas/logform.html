@@ -30,32 +30,50 @@
                 <a class="nav-link" href="#">Proximas Entregas</a>
               </li>
             </ul>
-            <a href="./logform.html" class="nav-item header__nav__links__btn">
-              <span class="span1"></span>
-              <span class="span2"></span>
-              <span class="span3"></span>
-              <span class="span4"></span>
-              Log In
-            </a>
           </div>
         </div>
       </nav>
     </header>
     <main class="main">
       <section class="main__log">
-        <div class="overlay">
-          <div class="main__log__absolute">
-            <h1>{ HAS FORJADO TU USUARIO EN LOS FUEGOS DE ANTORAS }</h1>
+        <div class="main__log__form">
+          <h2>Registrate en Books of Norion</h2>
+          <form>
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" required>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+    
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+    
+            <label for="confirm-password">Confirmar contraseña:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+
+            <label class="checkbox" for="remember-me">
+              <input type="checkbox" name="remember-me" id="remember-me">
+              Recordar usuario
+            </label>
+
+            <label class="checkbox" for="terms">
+              <input type="checkbox" name="terms" id="terms">
+              Acepto los terminos y condiciones
+            </label>
+    
+            <div class="form__buttons">
+              <input type="submit" value="Registrarse">
+            </div>
+          </form>
+          <div class ="main__log__form__ton">
+            <img src="../img/logo.png" alt="logo">
           </div>
-          <video onloadedmetadata="this.muted=true" autoplay loop>
-            <source src="../img/login.mp4">
-          </video>
         </div>
       </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <!--Script JS para Bootstrap-->
-    <script src="../js/main.js"></script>
+    <!--<script src="../js/main.js"></script>-->
     <!--Script JS nativo-->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!--Script aos-->

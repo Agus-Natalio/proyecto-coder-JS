@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!--Boxicons-->
     <link rel="stylesheet" href="./css/estilos.css">
     <!--Hoja de css-->
     <style>@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');</style>
@@ -36,8 +38,18 @@
               <span class="span2"></span>
               <span class="span3"></span>
               <span class="span4"></span>
-              Log In
+              Sign In
             </a>
+            <div class="btn-group">
+              <button type="button" class="btn btn-group__cart"><i class='bx bxs-cart-alt bx-sm header__nav__links__cart'></i></button>
+              <button type="button" class="btn btn-group__cart dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"><img src="./img/Piramide.png" alt="Piraminde Negra"></a></li>
+                <li><hr class="dropdown-divider"></li>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
@@ -90,30 +102,35 @@
               <p>
                 Folgstagt el Eterno
               </p>
+              <button type="button" class="btn main__books__btn">Agregar al carrito</button>
             </div>
             <div class="col">
               <img src="./img/Exiles.png" alt="Exiles">
               <p>
                 Los Exiliados
               </p>
+              <button type="button" class="btn main__books__btn">Agregar al carrito</button>
             </div>
             <div class="col">
               <img src="./img/Piramide.png" alt="Piramide">
               <p>
-                La Piramide Negra <br> de Niimatra
+                La Piramide Negra
               </p>
+              <button type="button" class="btn main__books__btn">Agregar al carrito</button>
             </div>
             <div class="col">
               <img src="/img/Octopus.png" alt="Octopus">
               <p>
                 El Fin de los Tiempos
               </p>
+              <button type="button" class="btn main__books__btn">Agregar al carrito</button>
             </div>
             <div class="col">
               <img src="./img/Piramide.png" alt="Piramide">
               <p>
                 El Reino Mortuorio
               </p>
+              <button type="button" class="btn main__books__btn">Agregar al carrito</button>
             </div>
           </div>
       </section>

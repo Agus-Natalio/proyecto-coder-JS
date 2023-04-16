@@ -44,7 +44,7 @@ body {
 .header__nav__links__item a:hover {
     color: goldenrod;
     font-weight: 200;
-    transition: 0.5s;
+    transition: 0.25s;
 }
 
 .header__nav__links__btn {
@@ -127,6 +127,27 @@ body {
     transition-delay: 0.75s;
 }
 
+.header__nav__links__cart {
+    color: #fff;
+    padding-top: 5px;
+}
+
+.btn-group {
+    margin-left: 2rem;
+}
+
+.btn-group__cart {
+    border-color: rgba(12,24,28,0.95)!important;
+}
+
+.dropdown-toggle, .dropdown-toggle:hover, .dropdown-toggle:active {
+    color: #fff!important;
+}
+
+.dropdown-item img {
+    width: 6rem;
+}
+
 /*FIN HEADER*/
 
 /*INICIO MAIN*/
@@ -202,49 +223,102 @@ body {
     padding-top: 0.5rem;
 }
 
-video {
-    width: 100%;
-}
-
-.main__log__absolute {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    right: 0;
-    position: absolute;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.main__log__absolute h1 {
-    font-size: 80px;
-    font-weight: 900;
-    font-family: antorian;
-    z-index: 100;
+.main__books__btn {
     color: #fff;
-    margin-bottom: 30px;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 1rem;
-    border-radius: 0.6rem;
+    background-color: rgb(216, 72, 47);
 }
 
-.main__log__absolute h1::after {
-    display: block;
-    width: 30%;
-    height: 10px;
-    margin: auto;
-    background: #ffffff;
+.main__books__btn:hover {
+    color: #fff;
+    background-color: rgb(170, 40, 16);
 }
 
-.overlay {
+.main__books__btn:active {
+    color: #fff!important;
+    background-color: rgb(170, 40, 16)!important;
+    border-color: goldenrod!important;
+}
+
+.main__log {
+    position: relative;
+    background-image: url(../img/form-BG.jpg)!important;
+    background-size: cover;
+    height: 94vh;
     width: 100%;
-    height: 100%;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.8);
 }
 
+.main__log__form {
+    position: absolute;
+    right: 2rem;
+    height: 100%;
+    width: 30%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+}
+  
+  .main__log__form h2 {
+    margin-top: 0;
+    padding: 1.5rem 0;
+}
+  
+  .main__log__form form {
+    display: flex;
+    flex-direction: column;
+}
+  
+  .main__log__form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+    margin-right: 10px;
+}  
+  
+  .main__log__form input, .main__log__form textarea {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 80%;
+}
+
+  .main__log__form label.checkbox input[type="checkbox"] {
+    margin-top: 5px;
+    margin-right: 5px;
+    display: inline-block;
+    width: auto;
+}
+  
+  .main__log__form input[type="submit"], .main__log__form button {
+    background-color: rgb(214, 183, 9);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    padding: 10px;
+    cursor: pointer;
+    width: 35%;
+    margin-top: 1rem;
+    letter-spacing: .5px;
+}
+  
+  .main__log__form input[type="submit"]:hover, .main__log__form button:hover {
+    transition: .5s;
+    background-color: rgb(0, 0, 0);
+}
+
+  .main__log__form__ton {
+    padding-left: 1.4rem;
+    margin-top: 2rem;
+    border-radius: 1rem;
+}
+
+  .main__log__form__ton img {
+    width: 95%;
+    border-radius: .75rem;
+    border-style: ridge;
+    border-color: gold;
+}
+  
 
 /*FONTS*/
 

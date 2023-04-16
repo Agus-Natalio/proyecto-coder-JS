@@ -1,3 +1,117 @@
+class bookData {
+    constructor(nombre, precio, autor, region, isbn){
+        this.name = nombre;
+        this.price = precio;
+        this.author = autor;
+        this.region = region;
+        this.isbn = isbn;
+    }
+}
+
+const bookFolgstagt = new bookData ("Folgstagt el Eterno", 4300, "Octopus Savinolla", "Frozeros", 9781592241842);
+const bookPiramideNegra = new bookData ("La Piramide Negra", 4000, "Augustus Nataliovsky", "Shularan", 9781091526624);
+const bookExiliados = new bookData ("Los Exiliados", 3200, "Jean Pierre Chevallier", "Reinos Sureños", 9781537367682);
+const bookMasNormal = new bookData ("Un Poco Mas Grande", 3000, "Efraim Merluzki", "Marcas Libres", 9781862188815)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function comprobacion (dato, datoAct, datoRequerido){
     do{
         if (dato != datoAct){
