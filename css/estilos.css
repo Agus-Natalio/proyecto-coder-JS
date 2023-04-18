@@ -7,7 +7,14 @@
 
 body {
     background-color: #1f2124;
+    overflow-x: hidden;
 }
+
+p {
+    margin: 0;
+}
+
+/*INICIO HEADER*/
 
 .header__nav {
     padding: 0.25rem 20rem;
@@ -178,6 +185,7 @@ body {
     padding: 0 6rem;
     text-align: center;
     letter-spacing: 1px;
+    margin-bottom: 1rem!important;
 }
 
 .main__hero__contenedor__texto {
@@ -226,6 +234,7 @@ body {
 .main__books__btn {
     color: #fff;
     background-color: rgb(216, 72, 47);
+    margin-top: 0.5rem;
 }
 
 .main__books__btn:hover {

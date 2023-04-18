@@ -1,20 +1,133 @@
 class bookData {
-    constructor(nombre, precio, autor, region, isbn){
-        this.name = nombre;
+    constructor(titulo, precio, autor, region, isbn, imagen){
+        this.title = titulo;
         this.price = precio;
         this.author = autor;
         this.region = region;
         this.isbn = isbn;
+        this.image = imagen;
     }
 }
 
-const bookFolgstagt = new bookData ("Folgstagt el Eterno", 4300, "Octopus Savinolla", "Frozeros", 9781592241842);
-const bookPiramideNegra = new bookData ("La Piramide Negra", 4000, "Augustus Nataliovsky", "Shularan", 9781091526624);
-const bookExiliados = new bookData ("Los Exiliados", 3200, "Jean Pierre Chevallier", "Reinos Sureños", 9781537367682);
-const bookMasNormal = new bookData ("Un Poco Mas Grande", 3000, "Efraim Merluzki", "Marcas Libres", 9781862188815)
+const books = [
+    {
+        title: "Folgstagt el Eterno",
+        price: 4299.90,
+        author: "Octopus Savinola",
+        region: "Frozeros",
+        isbn: 9781862188815,
+        image: "Octopus.png",
+    },
+    {
+        title: "Los Exiliados",
+        price: 3200,
+        author: "Jean Pierre Chevallier",
+        region: "Reinos Sureños",
+        isbn: 9781537367682,
+        image: "Exiles.png",
+    },
+    {
+        title: "La Piramide Negra",
+        price: 3999.90,
+        author: "Augustus Nataliovsky",
+        region: "Shularan",
+        isbn: 9781091526624,
+        image: "Piramide.png",
+    },
+    {
+        title: "Mas Grande de lo Normal",
+        price: 3600,
+        author: "Efraim Merluzki",
+        region: "Las Marcas Libres",
+        isbn: 9781592241842,
+        image: "placeholder.jpg",
+    },
+    {
+        title: "Arena y Sangre",
+        price: 4300,
+        author: "Efraim Merluzki",
+        region: "Shularan",
+        isbn: 9781156617168,
+        image: "placeholder.jpg",
+    },
+    {
+        title: "Thruum Blodhorn",
+        price: 2300,
+        author: "Francis Prattford",
+        region: "Reinos del Norte",
+        isbn: 9781112698880,
+        image: "placeholder.jpg",
+    },
+    {
+        title: "Clapper",
+        price: 2800,
+        author: "Augutus Nataliovsky",
+        region: "Las Marcas Libres",
+        isbn: 9781824012653,
+        image: "placeholder.jpg",
+    },
+    {
+        title: "La Caida de Farendor",
+        price: 4000,
+        author: "Jean Pierre Chevallier",
+        region: "Reinos del Oeste",
+        isbn: 9781742311548,
+        image: "placeholder.jpg",
+    },
+    {
+        title: "Titanomaquius",
+        price: 3700,
+        author: "Leonardo Fotunosa",
+        region: "Antiguas Polis Kandoricas",
+        isbn: 9781527828339,
+        image: "placeholder.jpg",
+    },
+    {
+        title: "Guerra Darkin: Tomo 1",
+        price: 4100,
+        author: "Efraim Merluzki",
+        region: "Shularan",
+        isbn: 9781129907609,
+        image: "placeholder.jpg",
+    },
+];
 
+function crearHTML(array) {
+    // Vaciar html
+    let html = "";
+    contenedor.innerHTML = "";
+    // Construir html
+    for (let i = 0; i < array.length; i++) {
+      // Agregar un nuevo div con la clase "row" cada 5 elementos
+      if (i % 5 === 0) {
+        html += '<div class="row my-3 main__books__fila">';
+      }
+      const book = array[i];
+      html += `
+        <div class="col">
+          <img src="./img/${book.image}" alt="${book.title}">
+          <p>
+            ${book.title}
+          </p>
+          <p>
+            $ ${book.price}             
+          </p>
+          <button type="button" class="btn main__books__btn" id="${book.isbn}">Agregar al carrito</button>
+        </div>
+      `;
+      // Cerrar el div con la clase "row" después del quinto elemento
+      if (i % 5 === 4 || i === array.length - 1) {
+        html += '</div>';
+      }
+    }
+    contenedor.innerHTML = html;
+  }
+  
 
+//Llamo a la funcion
+crearHTML(books);
 
+//Listeners
 
 
 
@@ -55,12 +168,48 @@ const bookMasNormal = new bookData ("Un Poco Mas Grande", 3000, "Efraim Merluzki
 
 
 
+/*let books = bookData;
 
+function books (titulo, precio, autor, region, isbn, img){
+    this.title = titulo;
+    this.price = precio;
+    this.author = autor;
+    this.region = region;
+    this.isbn = isbn;
+    //Si imagen es un string vacio setea this.img en la imagen defaulta asignada en la url, si no lo setea en el valor que tenga img
+    img = "" ? (this.img = `https://thealmanian.com/wp-content/uploads/2019/01/product_image_thumbnail_placeholder.png`) : (this.img = img);
+}
 
+function guardarLS(arr){
+    localStorage.setItem("bookData", JSON.stringify(arr));
+}
 
+function crearHTML(arr) {
+    tbody.innerHTML = "";
 
+    let html="";
+    for (const item of arr){
+        const{img, title, price} = item;
+        html = `<tr>
+        <td>${img}</td>
+        <td>${title}</td>
+        <td>${price}</td>
+        </tr>`;
+        tbody.innerHTML += html;
+    }*/
+    /*Adicion de libros a la vista*/
+    /*const arrayBtns = document.querySelectorAll(".main__books__btn");
+    arrayBtns.forEach((main__books__btn) => {
+        main__books__btn.addEventListener("click", () =>{
+            books = books.filter((el) => el.isbn == main__books__btn.id);
+            guardarLS(books);
+            crearHTML(books);
+        });
+    });
+}
 
 
+crearHTML(books);*/
 
 
 
@@ -112,7 +261,55 @@ const bookMasNormal = new bookData ("Un Poco Mas Grande", 3000, "Efraim Merluzki
 
 
 
-function comprobacion (dato, datoAct, datoRequerido){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*function comprobacion (dato, datoAct, datoRequerido){
     do{
         if (dato != datoAct){
             dato = prompt(datoRequerido +" incorrecto.\nVuelva a ingresar su " + datoRequerido);
@@ -126,7 +323,7 @@ function filterRegion (arr, filtro){
     return arr.filter((el)=>{
         return el.region == filtro
     })
-}
+}*/
 
 /*const findBook = (arr, filtro) =>{
     const encontrado = arr.find((el)=>{
@@ -134,7 +331,7 @@ function filterRegion (arr, filtro){
     })
 } De momento no es necesario para la cantidad de libros que hay*/
 
-class userData {
+/*class userData {
     constructor(userName, userMail, userPass){
         this.name = userName;
         this.mail = userMail;
@@ -279,4 +476,4 @@ if (ingreso) {
     }
 }else{
     alert("Usuario bloqueado.\nSe ha enviado un correro para desbloquearlo a "+user.mail);
-}
+}*/
