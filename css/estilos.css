@@ -42,7 +42,7 @@ p {
 
 .header__nav__links__item a {
     color: white;
-    margin: 0 0.75rem;
+    margin: 0.75rem 2rem 0.75rem 0;
     font-weight: 500;
     font-size: 1.05rem;
     text-decoration: none;
@@ -57,7 +57,7 @@ p {
 .header__nav__links__btn {
     position: relative;
     display: inline-block;
-    padding: 10px 40px;
+    padding: 10px 30px;
     color: white;
     letter-spacing: 1px;
     font-size: 1rem;
@@ -151,8 +151,48 @@ p {
     color: #fff!important;
 }
 
-.dropdown-item img {
+.product-item {
+    display: flex;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 4rem;
+    padding-right: 1rem;
+}
+
+.product-title {
+    margin: 0;
+}
+
+.delete-button {
+    margin-top: 0.5rem;
+    background-color: #0c181c;
+    color: white;
+    border: none;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.delete-button:hover{
+    background: #a81120;
+    box-shadow: 0 0 10px #a81120, 0 0 40px #a81120, 0 0 80px #a81120;
+    transition-delay: 1s;
+    transition: .5s;
+}
+
+.dropdown-menu img {
     width: 6rem;
+    padding: 0.2rem 0 0.2rem 1rem;
+}
+
+.dropdown-menu p{
+    padding-left: 0.5rem; 
 }
 
 /*FIN HEADER*/
@@ -244,20 +284,21 @@ p {
 
 .main__books__btn:active {
     color: #fff!important;
-    background-color: rgb(170, 40, 16)!important;
+    background-color: rgb(153, 32, 10)!important;
     border-color: goldenrod!important;
 }
 
-.main__log {
+.main__log{
     position: relative;
-    background-image: url(../img/form-BG.jpg)!important;
     background-size: cover;
     height: 94vh;
     width: 100%;
 }
 
 .main__log__form {
+    overflow-y: hidden;
     position: absolute;
+    bottom: 0%;
     right: 2rem;
     height: 100%;
     width: 30%;
