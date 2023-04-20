@@ -100,6 +100,13 @@ function guardarLS(arr) {
     localStorage.setItem("booksCart", JSON.stringify(arr))
 }
 
+//Filtros
+function filtrar(arr, filtro, parametro) {
+    return arr.filter((el)=> {
+        return el[`${parametro}`].toLowerCase().includes(filtro.toLowerCase());
+    });
+}
+
 //Manipulacion del DOM
 function crearHTML(array) {
     // Vaciar html
@@ -155,18 +162,15 @@ function crearCart(array) {
         </li>
         <li><hr class="dropdown-divider"></li>
         `;
-        //Establece un divisor entre cada libro del carrito
+        //Establece un divisor entre cada libro del carrito y deja un espacio abajo de todo para futuros botones
         contCart.innerHTML += html;
     }
 };
-
-let addBook = [];
 
 const arrayBtns = document.querySelectorAll(".btn__compra");
 arrayBtns.forEach((btn)=>{
     btn.addEventListener('click', ()=>{
         const addBook = books.find((el)=> el.isbn == btn.id);
-        console.log(addBook);
         cart.push(addBook);
         guardarLS(cart);
         crearCart(cart);
@@ -175,8 +179,64 @@ arrayBtns.forEach((btn)=>{
             duration: 3000,
             position: "left",   
             style: {
-                background: "rgb(41, 187, 12)"
+                background: "rgb(30, 122, 11)"
             }, 
             }).showToast();
+        console.log(cart);
     });
+});
+
+//Vaciar completamente el carrito
+const vaciarBotonCart = document.getElementById('vaciar-cart');
+function vaciarCart() {
+    //Vaciar HTML del carrito, local storage y array cart
+    let html = "";
+    contCart.innerHTML = "";
+    if (cart.length != 0){
+        const contCart = document.getElementById('contCart');
+        localStorage.removeItem('booksCart');
+        cart.length= 0;
+        //Construccion del html deafult del carrito
+        html = 
+        `
+            <p>Aun no has agregado ningun libro al carrito</p>
+        `
+        contCart.innerHTML += html;
+        localStorage.setItem('booksCart', JSON.stringify(cart));
+        Toastify({
+          text: 'Se eliminaron los libros del carrito',
+          duration: 3000,
+          position: 'left',
+          style: {
+            background: '#a81120',
+          },
+        }).showToast();
+    }else{
+        html = 
+        `
+            <p>Aun no has agregado ningun libro al carrito</p>
+        `
+        contCart.innerHTML += html;
+        Toastify({
+            text: 'Aun no agregaste nada al carrito',
+            duration: 3000,
+            position: 'left',
+            style: {
+              background: 'rgb(184, 181, 0)',
+            },
+          }).showToast();
+    }
+}
+vaciarBotonCart.addEventListener('click', vaciarCart);
+
+//Reconstruccion del carrito al volver al salir y volver a la vista principal
+if (cart != undefined) {
+    const arrCart = JSON.parse(localStorage.getItem('booksCart'));
+    crearCart(arrCart);
+};
+
+//Listeners de busqueda
+search.addEventListener('input', ()=> {
+    let newFilter = filtrar(books, search.value, 'title');
+    crearHTML(newFilter);
 });

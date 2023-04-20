@@ -47,9 +47,10 @@
               <button type="button" class="btn btn-group__cart dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="visually-hidden">Toggle Dropdown</span>
                 <ul class="dropdown-menu" id="contCart">
+                  <p>Aun no has agregado ningun libro al carrito</p>
                 </ul>
               </button>
-              <button class="delete-button">Vaciar</button>
+              <button class="delete-button" id="vaciar-cart">Vaciar</button>
             </div>
           </div>
         </div>
@@ -96,6 +97,11 @@
       </section>
       <section class="main__books">
         <h2>Libros</h2>
+        <div class="main__books__search">
+          <input id="search" class="main__books__search__txt" type="text" placeholder="Buscar...">
+          <button class="main__books__search__btn" type="submit">Buscar</button>
+          </div>
+        </div>
         <div class="container text-center px-7" id = "contenedor">
         </div>
       </section>

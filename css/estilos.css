@@ -192,7 +192,7 @@ p {
 }
 
 .dropdown-menu p{
-    padding-left: 0.5rem; 
+    padding: 0 0.5rem; 
 }
 
 /*FIN HEADER*/
@@ -253,6 +253,34 @@ p {
     font-size: 1.5rem;
 }
 
+.main__books__search {
+    margin-left: 21rem;
+    margin-bottom: 20px;
+}
+  
+.main__books__search__txt {
+    padding: 8px;
+    border: 5px solid rgba(12, 24, 28, 0.95);
+    border-radius: 0.5rem;
+    font-size: 16px;
+    margin-right: 10px;
+}
+  
+.main__books__search__btn {
+    padding: 8px;
+    color: #fff;
+    background: rgb(216, 72, 47);
+    border: 1px solid goldenrod;
+    border-radius: 0.25rem;
+    font-size: 16px;
+    cursor: pointer;
+}
+  
+.main__books__search__btn:hover {
+    background: rgb(153, 32, 10);
+    transition: 0.5s;
+}
+
 .main__books__fila img {
     width: 12rem;
     -webkit-animation: shadow-drop-br 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -291,7 +319,7 @@ p {
 .main__log{
     position: relative;
     background-size: cover;
-    height: 94vh;
+    height: 91.90vh;
     width: 100%;
 }
 
