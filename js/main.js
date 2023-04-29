@@ -92,7 +92,7 @@ const books = [
     },
 ];
 
-const cart = [];
+let cart = [];
 
 /* FUNCIONES */
 //Local Storage
@@ -157,12 +157,15 @@ function crearCart(array) {
           <div class="product-info">
             <p class="product-title">${book.title}</p>
             <p class="product-price">$${book.price}</p>
+            <div class="product-spacer"></div>
+            <div class="product-erase">
+              <button type="button" class="btn btn-danger product-btn">X</button>
+            </div>
           </div>
         </div>
         </li>
-        <li><hr class="dropdown-divider"></li>
+        <hr>
         `;
-        //Establece un divisor entre cada libro del carrito y deja un espacio abajo de todo para futuros botones
         contCart.innerHTML += html;
     }
 };
@@ -170,6 +173,9 @@ function crearCart(array) {
 const arrayBtns = document.querySelectorAll(".btn__compra");
 arrayBtns.forEach((btn)=>{
     btn.addEventListener('click', ()=>{
+        if (cart.length == 0 && localStorage.length != 0) {
+            cart = JSON.parse(localStorage.getItem('booksCart'))
+        }
         const addBook = books.find((el)=> el.isbn == btn.id);
         cart.push(addBook);
         guardarLS(cart);
@@ -192,10 +198,10 @@ function vaciarCart() {
     //Vaciar HTML del carrito, local storage y array cart
     let html = "";
     contCart.innerHTML = "";
-    if (cart.length != 0){
+    if (localStorage.getItem('booksCart') != null){
         const contCart = document.getElementById('contCart');
         localStorage.removeItem('booksCart');
-        cart.length= 0;
+        cart= [];
         //Construccion del html deafult del carrito
         html = 
         `
@@ -229,7 +235,7 @@ function vaciarCart() {
 }
 vaciarBotonCart.addEventListener('click', vaciarCart);
 
-//Reconstruccion del carrito al volver al salir y volver a la vista principal
+//Reconstruccion del carrito al salir y volver a la vista principal
 if (cart != undefined) {
     const arrCart = JSON.parse(localStorage.getItem('booksCart'));
     crearCart(arrCart);
@@ -240,3 +246,25 @@ search.addEventListener('input', ()=> {
     let newFilter = filtrar(books, search.value, 'title');
     crearHTML(newFilter);
 });
+
+/*TEMA A PARTE*/
+/*TODO ESO SOLO ES EL REGISTRO, AHORA EL LOG IN (Acordarme de reveer un poco el tema del log in)*/
+const formIngreso = document.querySelector('#login'),
+    userInput = document.querySelector('#user'),
+    passInput = document.querySelector('pass'),
+    p = document.querySelector('#mensaje');
+
+//Arrancamos con el inicio de sesion
+function inicioSesion(usuarios) {
+    let userFound = usuarios.find((usuario) => {
+        return user.name == userInput.value && usuario.pass == passInput.value;
+    })
+    //Si encuentra al usuario redireccionar
+    if(userFound) {
+        window.location.href = './index.html';
+    }else{
+        document.querySelector('#mensaje').innerText = 'Usuario inexistente';
+    }
+};
+
+/* Ejecutamos las funciones */

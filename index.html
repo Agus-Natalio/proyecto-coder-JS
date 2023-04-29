@@ -35,22 +35,35 @@
                 <a class="nav-link" href="#">Proximas Entregas</a>
               </li>
             </ul>
-            <a href="./vistas/logform.html" class="nav-item header__nav__links__btn">
+            <button type="button" class="btn btn-primary header__nav__links__cart" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <i class='bx bxs-cart bx-sm'></i>
+            </button>           
+            <a href="./vistas/logForm.html" class="nav-item header__nav__links__btn">
               <span class="span1"></span>
               <span class="span2"></span>
               <span class="span3"></span>
               <span class="span4"></span>
-              Sign In
+              Log In
             </a>
-            <div class="btn-group">
-              <button type="button" class="btn btn-group__cart"><i class='bx bxs-cart-alt bx-sm header__nav__links__cart'></i></button>
-              <button type="button" class="btn btn-group__cart dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="visually-hidden">Toggle Dropdown</span>
-                <ul class="dropdown-menu" id="contCart">
-                  <p>Aun no has agregado ningun libro al carrito</p>
-                </ul>
-              </button>
-              <button class="delete-button" id="vaciar-cart">Vaciar</button>
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Carrito de libros</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <ul id="contCart">
+                      <p>Aun no has agregado libros al carrito</p>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger product-endBtn pay">Pagar</button>
+                    <button type="button" class="btn btn-danger product-endBtn empty" id="vaciar-cart">Vaciar</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
