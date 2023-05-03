@@ -1,16 +1,18 @@
-const formRegistro = document.querySelector('#formReg'),
-    nombre = document.querySelector('#'),
-    email = document.querySelector('#'),
-    pass = document.querySelector('#'),
-    btnRegistro = document.querySelector('#');
+const formRegistro = document.querySelector('#formRegistro'),
+    nombre = document.querySelector('#username'),
+    email = document.querySelector('#email'),
+    pass = document.querySelector('#password'),
+    passConfirm = document.querySelector('#confirm-password'),
+    btnRegistrar = document.querySelector('#registro');
 
 
-    //constructor usuario
+//constructor usuario
 class user {
-    constructor(nombre, email, contraseña) {
-        this.name = nombre;
+    constructor(nombre, email, contraseña, otraContra) {
+        this.nombre = nombre;
         this.email = email;
         this.password = contraseña;
+        this.passConfirm = otraContra;
     };
 };
 
@@ -28,16 +30,42 @@ function userStorage(elemento){
 };
 userStorage(usuarios);
 
+//Check de mail y usuario
+
+function datoExistente(elementoArray, elementoInput) {
+    for (let i = 0; i < usuarios.length; i++) {
+        if (elementoArray === 'email' && usuarios[i].email === elementoInput) {
+            return true;
+        } else if (elementoArray === 'nombre' && usuarios[i].nombre === elementoInput) {
+            return true;
+        }
+    }
+    return false;
+}
+
 //Evento
 //Para que el boton de registro efectivamente cree un usuario
 formRegistro.addEventListener('submit', (e)=>{
     e.preventDefault();
-    const newUser = new Usuario(
+    const newUser = new user(
         nombre.value,
         email.value,
         pass.value,
+        passConfirm.value,
     )
-    //Pusheo sobre el array usuarios y cargo al storage el array actualizado
-    guardarUser(newUser);
-    userStorage(usuarios);
+    if (pass.value === passConfirm.value){
+        if (datoExistente('email', email.value)) {
+            document.querySelector('#mensaje').innerText = "El mail ya esta en uso!";
+        } else if (datoExistente('nombre', nombre.value)) {
+            document.querySelector('#mensaje').innerText = "El usuario ya existe!";
+        } else {
+            guardarUser(newUser);
+            userStorage(usuarios);
+            swal("Bienvenido "+nombre.value+"!", "Usuario creado con exito", "success");
+            document.querySelector('#mensaje').innerText = "";
+            formRegistro.reset();
+        }
+    } else{
+        document.querySelector('#mensaje').innerText = "Las claves no coinciden!";
+    }
 });

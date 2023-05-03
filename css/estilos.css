@@ -58,6 +58,7 @@ p {
     position: relative;
     display: inline-block;
     padding: 10px 30px;
+    margin-top: .4rem;
     color: white;
     letter-spacing: 1px;
     font-size: 1rem;
@@ -184,12 +185,12 @@ ul {
 }
 
 .product-spacer {
-    flex-grow: .90;
+    flex-grow: .20;
 }
 
 .product-btn {
     padding: .5rem;
-    margin-left: 14.5rem;
+    margin-left: 17rem;
     border-radius: .25rem;
     background-color: #fff;
     border-color: #fff;
@@ -418,6 +419,10 @@ ul {
     margin-top: 1rem;
     letter-spacing: .5px;
 }
+
+  .main__log__form__errorMsg {
+    color: #ca0505;
+  }
   
   .main__log__form input[type="submit"]:hover, .main__log__form button:hover {
     transition: .5s;
@@ -436,7 +441,7 @@ ul {
     border-style: ridge;
     border-color: gold;
 }
-  
+
 
 /*FONTS*/
 

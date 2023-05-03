@@ -100,6 +100,11 @@ function guardarLS(arr) {
     localStorage.setItem("booksCart", JSON.stringify(arr))
 }
 
+function usuarioLogueado() {
+    const usuarioActivo =JSON.parse(localStorage.getItem('usuarioActivo'));
+    return usuarioActivo;
+};
+
 //Filtros
 function filtrar(arr, filtro, parametro) {
     return arr.filter((el)=> {
@@ -142,6 +147,11 @@ function crearHTML(array) {
 //Llamo a la funcion
 crearHTML(books);
 
+const usuarioActivo = usuarioLogueado();
+if (usuarioActivo != null) {
+    document.querySelector('#logText').innerHTML = `<p class="header__nav__links__btn">¡Bienvenido ${usuarioActivo.nombre}!</p>`;
+}
+
 //Seguimos con funciones y listeners
 function crearCart(array) {
     //Vaciar HTML
@@ -177,6 +187,7 @@ arrayBtns.forEach((btn)=>{
             cart = JSON.parse(localStorage.getItem('booksCart'))
         }
         const addBook = books.find((el)=> el.isbn == btn.id);
+        console.log(addBook);
         cart.push(addBook);
         guardarLS(cart);
         crearCart(cart);
@@ -238,6 +249,7 @@ vaciarBotonCart.addEventListener('click', vaciarCart);
 //Reconstruccion del carrito al salir y volver a la vista principal
 if (cart != undefined) {
     const arrCart = JSON.parse(localStorage.getItem('booksCart'));
+    console.log(arrCart);
     crearCart(arrCart);
 };
 
@@ -246,25 +258,3 @@ search.addEventListener('input', ()=> {
     let newFilter = filtrar(books, search.value, 'title');
     crearHTML(newFilter);
 });
-
-/*TEMA A PARTE*/
-/*TODO ESO SOLO ES EL REGISTRO, AHORA EL LOG IN (Acordarme de reveer un poco el tema del log in)*/
-const formIngreso = document.querySelector('#login'),
-    userInput = document.querySelector('#user'),
-    passInput = document.querySelector('pass'),
-    p = document.querySelector('#mensaje');
-
-//Arrancamos con el inicio de sesion
-function inicioSesion(usuarios) {
-    let userFound = usuarios.find((usuario) => {
-        return user.name == userInput.value && usuario.pass == passInput.value;
-    })
-    //Si encuentra al usuario redireccionar
-    if(userFound) {
-        window.location.href = './index.html';
-    }else{
-        document.querySelector('#mensaje').innerText = 'Usuario inexistente';
-    }
-};
-
-/* Ejecutamos las funciones */

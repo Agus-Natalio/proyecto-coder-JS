@@ -42,13 +42,15 @@
         <img class="main__log" src="../img/form-BG1.jpg" alt="background">
         <div class="main__log__form" data-aos="fade-left">
           <h2>Bienvenido a Books of Norion</h2>
-          <form>
+          <form id="login">
             <label for="username">Usuario:</label>
             <input type="text" id="username" name="username" required>
     
             <label for="password">Contraseña:</label>
             <input type="password" id="password" name="password" required>
 
+            <p class="main__log__form__errorMsg" id="mensaje"></p>
+            
             <label class="checkbox" for="remember-me">
               <input type="checkbox" name="remember-me" id="remember-me">
               Recordar usuario
@@ -74,5 +76,7 @@
       AOS.init();
     </script>
     <!--Script aos-->
+    <script src="../js/logIn.js"></script>
+    <!--Script JS nativo-->
   </body>
 </html>
