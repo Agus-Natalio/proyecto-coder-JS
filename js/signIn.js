@@ -61,7 +61,7 @@ formRegistro.addEventListener('submit', (e)=>{
         } else {
             guardarUser(newUser);
             userStorage(usuarios);
-            swal("Bienvenido "+nombre.value+"!", "Usuario creado con exito", "success");
+            swal("Bienvenid@ "+nombre.value+"!", "Usuario creado con exito", "success");
             document.querySelector('#mensaje').innerText = "";
             formRegistro.reset();
         }

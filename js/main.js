@@ -153,23 +153,25 @@ if (usuarioActivo != null) {
 }
 
 //Seguimos con funciones y listeners
+let totalPrice = 0;
 function crearCart(array) {
     //Vaciar HTML
     let html= "";
     contCart.innerHTML= "";
+    totalPrice = 0;
     //Construir HTML
     for (const book of array) {
         html =
         `
         <li>
         <div class="product-item">
-          <img src="./img/${book.image}" alt="Piramide Negra">
+          <img src="./img/${book.image}" alt=${book.title}>
           <div class="product-info">
             <p class="product-title">${book.title}</p>
             <p class="product-price">$${book.price}</p>
             <div class="product-spacer"></div>
             <div class="product-erase">
-              <button type="button" class="btn btn-danger product-btn">X</button>
+              <button type="button" class="btn btn-danger product-btn" id="${book.isbn}">X</button>
             </div>
           </div>
         </div>
@@ -177,17 +179,39 @@ function crearCart(array) {
         <hr>
         `;
         contCart.innerHTML += html;
+        totalPrice += book.price;
+        //Eliminar un item del carrito (Va dentro de la funcion para asegurarme de que el boton ya existe en el DOM antes de agregar el evento)
+        const arrayEraseBtns = document.querySelectorAll(".product-btn");
+        arrayEraseBtns.forEach((btn)=>{
+            btn.addEventListener('click', ()=>{
+                cart = cart.filter((el) => el.isbn != btn.id)
+                guardarLS(cart);
+                if (cart.length >= 1){
+                    crearCart(cart);
+                }else{
+                    html = "<p>Aun no has agregado ningun libro al carrito</p>"
+                    contCart.innerHTML = html;
+                }
+                console.log(cart);
+            });
+        });
+    };
+    // Agregar HTML para mostrar la suma total si esta es distinta de 0
+    if (totalPrice > 0) {
+        totalPrice = parseFloat(totalPrice.toFixed(2));
+        const totalCart = document.createElement('span');
+        totalCart.classList.add('total-cart');
+        totalCart.textContent = `Total a pagar: $${totalPrice}`;
+        contCart.appendChild(totalCart);
     }
 };
-
 const arrayBtns = document.querySelectorAll(".btn__compra");
 arrayBtns.forEach((btn)=>{
     btn.addEventListener('click', ()=>{
-        if (cart.length == 0 && localStorage.length != 0) {
+        if (cart.length == 0 && localStorage.getItem('booksCart') != null) {
             cart = JSON.parse(localStorage.getItem('booksCart'))
         }
         const addBook = books.find((el)=> el.isbn == btn.id);
-        console.log(addBook);
         cart.push(addBook);
         guardarLS(cart);
         crearCart(cart);
@@ -199,9 +223,32 @@ arrayBtns.forEach((btn)=>{
                 background: "rgb(30, 122, 11)"
             }, 
             }).showToast();
-        console.log(cart);
     });
 });
+
+//Pagar items del carrito
+const pagarBotonCart = document.getElementById('pagar-cart');
+function pagarCart () {
+    //Vaciar HTML del carrito, local storage y array cart
+    if (usuarioActivo != null) {
+        if (cart.length == 0) {
+            swal("Oops!", "El carrito esta vacio", "error");
+        }else{
+            let html = "";
+            contCart.innerHTML = "";
+            localStorage.removeItem('booksCart');
+            cart = [];
+            html = `
+                <p>Aun no has agregado ningun libro al carrito</p>
+            `
+            contCart.innerHTML += html;
+            swal("Compra exitosa!", "se ha enviado un comprobante a "+usuarioActivo.email, "success");
+        }
+    }else{
+        swal("Oops!", "Necesitas una cuenta para utilizar esta funcionalidad", "warning");
+    };
+};
+pagarBotonCart.addEventListener('click', pagarCart);
 
 //Vaciar completamente el carrito
 const vaciarBotonCart = document.getElementById('vaciar-cart');
@@ -210,7 +257,6 @@ function vaciarCart() {
     let html = "";
     contCart.innerHTML = "";
     if (localStorage.getItem('booksCart') != null){
-        const contCart = document.getElementById('contCart');
         localStorage.removeItem('booksCart');
         cart= [];
         //Construccion del html deafult del carrito
@@ -219,7 +265,6 @@ function vaciarCart() {
             <p>Aun no has agregado ningun libro al carrito</p>
         `
         contCart.innerHTML += html;
-        localStorage.setItem('booksCart', JSON.stringify(cart));
         Toastify({
           text: 'Se eliminaron los libros del carrito',
           duration: 3000,
@@ -248,9 +293,8 @@ vaciarBotonCart.addEventListener('click', vaciarCart);
 
 //Reconstruccion del carrito al salir y volver a la vista principal
 if (cart != undefined) {
-    const arrCart = JSON.parse(localStorage.getItem('booksCart'));
-    console.log(arrCart);
-    crearCart(arrCart);
+    cart = JSON.parse(localStorage.getItem('booksCart'));
+    crearCart(cart);
 };
 
 //Listeners de busqueda

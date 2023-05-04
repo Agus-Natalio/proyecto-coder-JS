@@ -14,6 +14,10 @@ p {
     margin: 0;
 }
 
+dl, ol, ul {
+    margin-bottom: 0!important;
+}
+
 /*INICIO HEADER*/
 
 .header__nav {
@@ -218,20 +222,28 @@ ul {
 
 .product-endBtn.pay {
     margin-right: 2rem;
+    background-color: rgb(216, 72, 47);
+    border-color: #000;
+    color: #fff;
 }
 
 .product-endBtn.pay:hover {
     background-color: green;
     border-color: green;
-    box-shadow: 0 0 10px green, 0 0 15px green, 0 0 25px green;
     font-weight: 500;
     transition: .25s;
 }
 
+.product-endBtn.empty {
+    background-color: #fff;
+    border-color: #000;
+    color: #000;
+}
+
 .product-endBtn.empty:hover {
-    background-color: #e00404;
-    border-color: #e00404;
-    box-shadow: 0 0 10px #e00404, 0 0 15px #e00404, 0 0 25px #e00404;
+    background-color: #c00d0d;
+    border-color: #c00d0d;
+    color: #fff;
     font-weight: 500;
     transition: .25s;
 }
@@ -442,6 +454,28 @@ ul {
     border-color: gold;
 }
 
+/*SIMBOLO DE CARGA*/
+
+.three-quarter-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgb(216, 72, 47);
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin .5s linear 0s infinite;
+}
+
+/*SWAL*/
+
+.swal-button--confirm {
+    background-color: rgb(216, 72, 47) !important;
+    border-color: #000!important;
+}
+
+.swal-button--confirm:hover {
+    background-color: #000 !important;
+    transition: .5s;
+}
 
 /*FONTS*/
 

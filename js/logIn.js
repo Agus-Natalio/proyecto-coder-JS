@@ -25,8 +25,8 @@ function inicioSesion(usuarios) {
 };
 
 function recuperarLS() {
-    return JSON.parse(localStorage.getItem('usuarios'));
-};
+    return JSON.parse(localStorage.getItem('usuarios')) || [];
+}
 
 /* Ejecutamos funciones */
 const usuariosRegistrados = recuperarLS();
