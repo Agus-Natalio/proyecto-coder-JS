@@ -292,7 +292,7 @@ function vaciarCart() {
 vaciarBotonCart.addEventListener('click', vaciarCart);
 
 //Reconstruccion del carrito al salir y volver a la vista principal
-if (cart != undefined) {
+if (cart.length != 0) {
     cart = JSON.parse(localStorage.getItem('booksCart'));
     crearCart(cart);
 };
