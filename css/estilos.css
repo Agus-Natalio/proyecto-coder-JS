@@ -254,27 +254,27 @@ ul {
 }
 
 .loggedUser-btn {
-    background-color: #000;
+    background-color: #fff;
     border-color: rgb(216, 72, 47);
     color: rgb(216, 72, 47);
     font-weight: 700;
 }
 
 .loggedUser-btn:hover, .loggedUser-btn:active {
-    background-color: #000!important;
+    background-color: #fff!important;
     border-color: rgb(216, 72, 47)!important;
     color: rgb(216, 72, 47)!important;
 }
 
 .loggedUser-btn.dpBtn {
-    background-color: #000;
+    background-color: #fff;
     color: rgb(216, 72, 47);
 }
 
 .dpBtn:hover, .dpBtn:active, .dropdown-toggle.dropdown-toggle-split.show {
     background-color: rgb(216, 72, 47)!important;
-    border-color: #000(216, 72, 47);
-    color: #000!important;
+    border-color: rgb(216, 72, 47);
+    color: #fff!important;
     scale: 1.10;
     transition: .5s;
 }
