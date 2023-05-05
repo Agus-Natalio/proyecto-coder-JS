@@ -147,11 +147,6 @@ function crearHTML(array) {
 //Llamo a la funcion
 crearHTML(books);
 
-const usuarioActivo = usuarioLogueado();
-if (usuarioActivo != null) {
-    document.querySelector('#logText').innerHTML = `<p class="header__nav__links__btn">¡Bienvenido ${usuarioActivo.nombre}!</p>`;
-}
-
 //Seguimos con funciones y listeners
 let totalPrice = 0;
 function crearCart(array) {
@@ -292,10 +287,48 @@ function vaciarCart() {
 vaciarBotonCart.addEventListener('click', vaciarCart);
 
 //Reconstruccion del carrito al salir y volver a la vista principal
-if (cart.length != 0) {
+if (localStorage.getItem('booksCart') != null && JSON.parse(localStorage.getItem('booksCart')).length > 0) {
+    console.log(cart);
     cart = JSON.parse(localStorage.getItem('booksCart'));
     crearCart(cart);
 };
+
+//Cambio del DOM al hacer log in
+let usuarioActivo = usuarioLogueado();
+if (usuarioActivo != null || usuarioActivo != {}) {
+    document.querySelector('#logInfo').innerHTML = `
+        <div class="btn-group">
+            <button type="button" class="btn loggedUser-btn">${usuarioActivo.nombre}</button>
+            <button type="button" class="btn loggedUser-btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item disabled" href="#">Mi Perfil</a></li>
+                <li><a class="dropdown-item disabled" href="#">Historial de compras</a></li>
+                <li><a class="dropdown-item disabled" href="#">Mas sobre Tales of Norion™</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#" id="logOut">Cerrar Sesion</a></li>
+            </ul>
+        </div>
+    `;
+    crearCart(cart);
+};
+//Cambio del DOM al hacer log out
+const logOut = document.querySelector('#logOut')
+logOut.addEventListener('click', () =>{
+    swal("Se ha cerrado tu sesion", "Esperamos verte de nuevo "+usuarioActivo.nombre+"!", "warning");
+    usuarioActivo = {};
+    localStorage.removeItem('usuarioActivo');
+    document.querySelector('#logInfo').innerHTML = `
+    <a href="./vistas/logForm.html" class="nav-item header__nav__links__btn">
+        <span class="span1"></span>
+        <span class="span2"></span>
+        <span class="span3"></span>
+        <span class="span4"></span>
+        Log In
+    </a>
+    ` ;
+})
 
 //Listeners de busqueda
 search.addEventListener('input', ()=> {
