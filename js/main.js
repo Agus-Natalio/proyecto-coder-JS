@@ -299,7 +299,7 @@ if (usuarioActivo != null || usuarioActivo != {}) {
     document.querySelector('#logInfo').innerHTML = `
         <div class="btn-group">
             <button type="button" class="btn loggedUser-btn">${usuarioActivo.nombre}</button>
-            <button type="button" class="btn loggedUser-btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn loggedUser-btn dpBtn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu">

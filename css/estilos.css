@@ -254,18 +254,35 @@ ul {
 }
 
 .loggedUser-btn {
-    background-color: #fff;
-    border-color: #0c181c;
-    color: #0c181c;
+    background-color: #000;
+    border-color: rgb(216, 72, 47);
+    color: rgb(216, 72, 47);
+    font-weight: 700;
 }
 
-.loggedUser-btn:hover, .loggedUser-btn:active, .dropdown-toggle.dropdown-toggle-split.show {
+.loggedUser-btn:hover, .loggedUser-btn:active {
+    background-color: #000!important;
+    border-color: rgb(216, 72, 47)!important;
+    color: rgb(216, 72, 47)!important;
+}
+
+.loggedUser-btn.dpBtn {
+    background-color: #000;
+    color: rgb(216, 72, 47);
+}
+
+.dpBtn:hover, .dpBtn:active, .dropdown-toggle.dropdown-toggle-split.show {
     background-color: rgb(216, 72, 47)!important;
-    color: #fff!important;
+    border-color: #000(216, 72, 47);
+    color: #000!important;
+    scale: 1.10;
+    transition: .5s;
 }
 
 .dropdown-item:Active {
     background-color: rgb(216, 72, 47);
+    color: #000;
+    font-weight: 500;
 }
 
 /*FIN HEADER*/
