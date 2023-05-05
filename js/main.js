@@ -177,17 +177,20 @@ function crearCart(array) {
         totalPrice += book.price;
         //Eliminar un item del carrito (Va dentro de la funcion para asegurarme de que el boton ya existe en el DOM antes de agregar el evento)
         const arrayEraseBtns = document.querySelectorAll(".product-btn");
-        arrayEraseBtns.forEach((btn)=>{
-            btn.addEventListener('click', ()=>{
-                cart = cart.filter((el) => el.isbn != btn.id)
+        arrayEraseBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+              const index = cart.findIndex((el) => el.isbn == btn.id);
+              if (index !== -1) {
+                cart.splice(index, 1);
                 guardarLS(cart);
-                if (cart.length >= 1){
-                    crearCart(cart);
-                }else{
-                    html = "<p>Aun no has agregado ningun libro al carrito</p>"
-                    contCart.innerHTML = html;
-                }
-                console.log(cart);
+              }
+              if (cart.length >= 1) {
+                crearCart(cart);
+              } else {
+                const html = "<p>Aun no has agregado ningun libro al carrito</p>";
+                contCart.innerHTML = html;
+              }
+              console.log(cart);
             });
         });
     };
@@ -225,7 +228,7 @@ arrayBtns.forEach((btn)=>{
 const pagarBotonCart = document.getElementById('pagar-cart');
 function pagarCart () {
     //Vaciar HTML del carrito, local storage y array cart
-    if (usuarioActivo != null) {
+    if (usuarioActivo != null && Object.keys(usuarioActivo).length > 0) {
         if (cart.length == 0) {
             swal("Oops!", "El carrito esta vacio", "error");
         }else{
@@ -254,7 +257,7 @@ function vaciarCart() {
     if (localStorage.getItem('booksCart') != null){
         localStorage.removeItem('booksCart');
         cart= [];
-        //Construccion del html deafult del carrito
+        //Construccion del html default del carrito
         html = 
         `
             <p>Aun no has agregado ningun libro al carrito</p>

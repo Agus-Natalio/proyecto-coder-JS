@@ -279,10 +279,11 @@ ul {
     transition: .5s;
 }
 
-.dropdown-item:Active {
+.dropdown-item:hover {
     background-color: rgb(216, 72, 47);
-    color: #000;
+    color: #fff;
     font-weight: 500;
+    transition: .25s;
 }
 
 /*FIN HEADER*/

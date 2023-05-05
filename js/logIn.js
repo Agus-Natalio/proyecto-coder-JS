@@ -28,6 +28,8 @@ function recuperarLS() {
     return JSON.parse(localStorage.getItem('usuarios')) || [];
 }
 
+
+
 /* Ejecutamos funciones */
 const usuariosRegistrados = recuperarLS();
 
