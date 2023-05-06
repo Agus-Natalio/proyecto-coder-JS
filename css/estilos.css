@@ -256,8 +256,8 @@ ul {
 .loggedUser-btn {
     background-color: #fff;
     border-color: rgb(216, 72, 47);
-    color: rgb(216, 72, 47);
-    font-weight: 700;
+    color: rgb(68, 66, 66);
+    font-weight: 500;
 }
 
 .loggedUser-btn:hover, .loggedUser-btn:active {
@@ -492,15 +492,22 @@ ul {
     border-color: gold;
 }
 
-/*SIMBOLO DE CARGA*/
+.loadingError {
+    padding: 1rem 0;
+    margin: 5rem 10rem;
+    border: solid goldenrod;
+    border-radius: 1rem;
+    background-color: #000;
+    color: #ca0505;
+    font-weight: bold;
+}
 
-.three-quarter-spinner {
-    width: 50px;
-    height: 50px;
-    border: 3px solid rgb(216, 72, 47);
-    border-top: 3px solid transparent;
-    border-radius: 50%;
-    animation: spin .5s linear 0s infinite;
+/* LOADING */
+.spinner-grow {
+    width: 3rem;
+    height: 3rem;
+    margin: 14rem;
+    background-color: rgb(216, 72, 47);
 }
 
 /*SWAL*/

@@ -1,0 +1,82 @@
+[
+    {
+       "title":"Folgstagt el Eterno",
+       "price":4299.90,
+       "author":"Octopus Savinola",
+       "region":"Frozeros",
+       "isbn":9781862188815,
+       "image":"Octopus.png"
+    },
+    {
+       "title":"Los Exiliados",
+       "price":3200,
+       "author":"Jean Pierre Chevallier",
+       "region":"Reinos Sureños",
+       "isbn":9781537367682,
+       "image":"Exiles.png"
+    },
+    {
+       "title":"La Piramide Negra",
+       "price":3999.90,
+       "author":"Augustus Nataliovsky",
+       "region":"Shularan",
+       "isbn":9781091526624,
+       "image":"Piramide.png"
+    },
+    {
+       "title":"Mas Grande de lo Normal",
+       "price":3600,
+       "author":"Efraim Merluzki",
+       "region":"Las Marcas Libres",
+       "isbn":9781592241842,
+       "image":"SapoGrande.png"
+    },
+    {
+       "title":"Arena y Sangre",
+       "price":4300,
+       "author":"Efraim Merluzki",
+       "region":"Shularan",
+       "isbn":9781156617168,
+       "image":"placeholder.jpg"
+    },
+    {
+       "title":"Thruum Blodhorn",
+       "price":2300,
+       "author":"Francis Prattford",
+       "region":"Reinos del Norte",
+       "isbn":9781112698880,
+       "image":"placeholder.jpg"
+    },
+    {
+       "title":"Clapper",
+       "price":2800,
+       "author":"Augutus Nataliovsky",
+       "region":"Las Marcas Libres",
+       "isbn":9781824012653,
+       "image":"placeholder.jpg"
+    },
+    {
+       "title":"La Caida de Farendor",
+       "price":4000,
+       "author":"Jean Pierre Chevallier",
+       "region":"Reinos del Oeste",
+       "isbn":9781742311548,
+       "image":"placeholder.jpg"
+    },
+    {
+       "title":"Titanomaquius",
+       "price":3700,
+       "author":"Leonardo Fotunosa",
+       "region":"Antiguas Polis Kandoricas",
+       "isbn":9781527828339,
+       "image":"placeholder.jpg"
+    },
+    {
+       "title":"Guerra Darkin: Tomo 1",
+       "price":4100,
+       "author":"Efraim Merluzki",
+       "region":"Shularan",
+       "isbn":9781129907609,
+       "image":"placeholder.jpg"
+    }
+]

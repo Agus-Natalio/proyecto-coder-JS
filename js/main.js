@@ -1,99 +1,91 @@
-class bookData {
-    constructor(titulo, precio, autor, region, isbn, imagen){
-        this.title = titulo;
-        this.price = precio;
-        this.author = autor;
-        this.region = region;
-        this.isbn = isbn;
-        this.image = imagen;
-    }
+let books = [];
+
+//Hago un fetch de libros.json y lo transformo en un array
+const getBooksAsync = async () => {
+    try {
+        let response = await fetch('./data/libros.json');
+        let data = await response.json();
+        // Proceso los datos de json y los paso a books
+        processBooks(data);
+        // Establezco una promesa que se resuelve leugo de 3 segundos
+        const loadingBooks = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve();
+            }, 3000);
+        });
+        // Espero a que se resuelva la promesa antes de ejecutar la función crearHTML
+        await loadingBooks;
+        crearHTML(books);
+        //Listeners para los botones de añadir al carrito
+        const arrayBtns = document.querySelectorAll(".btn__compra");
+        arrayBtns.forEach((btn)=>{
+            btn.addEventListener('click', ()=>{
+                if (cart.length == 0 && localStorage.getItem('booksCart') != null) {
+                    cart = JSON.parse(localStorage.getItem('booksCart'))
+                }
+                const addBook = books.find((el)=> el.isbn == btn.id);
+                cart.push(addBook);
+                guardarLS(cart);
+                crearCart(cart);
+                Toastify({
+                    text: "Se agrego el libro al carrito",
+                    duration: 3000,
+                    position: "left",   
+                    style: {
+                        background: "rgb(30, 122, 11)"
+                    }, 
+                }).showToast();
+            });
+        });
+        search.addEventListener('input', ()=> {
+            loadingFilter();
+            setTimeout (()=>{
+                let newFilter = filtrar(books, search.value, 'title');
+                if (newFilter.length > 0){
+                    crearHTML(newFilter);
+                }else{
+                    errorMsgFilter();
+                }
+            },1000);
+        });
+    }catch(error){
+        // Si hay un error, llamo a la función errorMsgList()
+        errorMsgList();
+    };
+};
+
+//Procesa los datos y los almacena la variable tipo array books
+function processBooks(data) {
+    books = data; 
+};
+
+//Invoco a la funcion principal
+getBooksAsync();
+
+//Mensaje de error lista
+function errorMsgList() {
+    contenedor.innerHTML = `
+        <p class="loadingError">Ha ocurrido un error al cargar la pagina.<br>Le recomendamos esperar unos minutos antes de volver a entrar mientras solventamos esta crisis.</p>
+    `
 }
 
-const books = [
-    {
-        title: "Folgstagt el Eterno",
-        price: 4299.90,
-        author: "Octopus Savinola",
-        region: "Frozeros",
-        isbn: 9781862188815,
-        image: "Octopus.png",
-    },
-    {
-        title: "Los Exiliados",
-        price: 3200,
-        author: "Jean Pierre Chevallier",
-        region: "Reinos Sureños",
-        isbn: 9781537367682,
-        image: "Exiles.png",
-    },
-    {
-        title: "La Piramide Negra",
-        price: 3999.90,
-        author: "Augustus Nataliovsky",
-        region: "Shularan",
-        isbn: 9781091526624,
-        image: "Piramide.png",
-    },
-    {
-        title: "Mas Grande de lo Normal",
-        price: 3600,
-        author: "Efraim Merluzki",
-        region: "Las Marcas Libres",
-        isbn: 9781592241842,
-        image: "SapoGrande.png",
-    },
-    {
-        title: "Arena y Sangre",
-        price: 4300,
-        author: "Efraim Merluzki",
-        region: "Shularan",
-        isbn: 9781156617168,
-        image: "placeholder.jpg",
-    },
-    {
-        title: "Thruum Blodhorn",
-        price: 2300,
-        author: "Francis Prattford",
-        region: "Reinos del Norte",
-        isbn: 9781112698880,
-        image: "placeholder.jpg",
-    },
-    {
-        title: "Clapper",
-        price: 2800,
-        author: "Augutus Nataliovsky",
-        region: "Las Marcas Libres",
-        isbn: 9781824012653,
-        image: "placeholder.jpg",
-    },
-    {
-        title: "La Caida de Farendor",
-        price: 4000,
-        author: "Jean Pierre Chevallier",
-        region: "Reinos del Oeste",
-        isbn: 9781742311548,
-        image: "placeholder.jpg",
-    },
-    {
-        title: "Titanomaquius",
-        price: 3700,
-        author: "Leonardo Fotunosa",
-        region: "Antiguas Polis Kandoricas",
-        isbn: 9781527828339,
-        image: "placeholder.jpg",
-    },
-    {
-        title: "Guerra Darkin: Tomo 1",
-        price: 4100,
-        author: "Efraim Merluzki",
-        region: "Shularan",
-        isbn: 9781129907609,
-        image: "placeholder.jpg",
-    },
-];
+//Mensaje de error filtro
+function errorMsgFilter() {
+    contenedor.innerHTML =`
+        <p class="loadingError">No encontramos el libro que estas buscando</p>
+    `
+}
+
+//Funcion de carga para el filtro
+function loadingFilter() {
+    contenedor.innerHTML = `
+        <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    `
+}
 
 let cart = [];
-
 /* FUNCIONES */
 //Local Storage
 function guardarLS(arr) {
@@ -110,10 +102,10 @@ function filtrar(arr, filtro, parametro) {
     return arr.filter((el)=> {
         return el[`${parametro}`].toLowerCase().includes(filtro.toLowerCase());
     });
-}
+};
 
 //Manipulacion del DOM
-function crearHTML(array) {
+async function crearHTML(array) {
     // Vaciar html
     let html = "";
     contenedor.innerHTML = "";
@@ -141,11 +133,26 @@ function crearHTML(array) {
           html += '</div>';
         }
     }
-    contenedor.innerHTML = html;
+    contenedor.innerHTML += html;
 };
-
-//Llamo a la funcion
-crearHTML(books);
+//Simulacion de carga mediante promesas
+/*let productos = []
+const cargaLibros = (arr)=>{
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve(arr);
+        }, 1000);
+    });
+        cargaLibros(data)
+    .then((response)=>{
+        productos = response;
+        crearHTML(productos);
+    })
+    .catch(()=>{
+        errorMsg();
+    });
+};
+*/
 
 //Seguimos con funciones y listeners
 let totalPrice = 0;
@@ -203,26 +210,6 @@ function crearCart(array) {
         contCart.appendChild(totalCart);
     }
 };
-const arrayBtns = document.querySelectorAll(".btn__compra");
-arrayBtns.forEach((btn)=>{
-    btn.addEventListener('click', ()=>{
-        if (cart.length == 0 && localStorage.getItem('booksCart') != null) {
-            cart = JSON.parse(localStorage.getItem('booksCart'))
-        }
-        const addBook = books.find((el)=> el.isbn == btn.id);
-        cart.push(addBook);
-        guardarLS(cart);
-        crearCart(cart);
-        Toastify({
-            text: "Se agrego el libro al carrito",
-            duration: 3000,
-            position: "left",   
-            style: {
-                background: "rgb(30, 122, 11)"
-            }, 
-            }).showToast();
-    });
-});
 
 //Pagar items del carrito
 const pagarBotonCart = document.getElementById('pagar-cart');
@@ -301,16 +288,16 @@ let usuarioActivo = usuarioLogueado();
 if (usuarioActivo != null || usuarioActivo != {}) {
     document.querySelector('#logInfo').innerHTML = `
         <div class="btn-group">
-            <button type="button" class="btn loggedUser-btn">${usuarioActivo.nombre}</button>
+            <button type="button" class="btn loggedUser-btn" id="userNameBtn">${usuarioActivo.nombre}</button>
             <button type="button" class="btn loggedUser-btn dpBtn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item disabled" href="#">Mi Perfil</a></li>
-                <li><a class="dropdown-item disabled" href="#">Historial de compras</a></li>
-                <li><a class="dropdown-item disabled" href="#">Mas sobre Tales of Norion™</a></li>
+                <li><a class="dropdown-item disabled" href="#"><i class='bx bx-user' ></i> Mi Perfil</a></li>
+                <li><a class="dropdown-item disabled" href="#"><i class='bx bx-receipt'></i> Historial de compras</a></li>
+                <li><a class="dropdown-item disabled" href="#"><i class='bx bxs-magic-wand' ></i> Mas sobre Tales of Norion™</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#" id="logOut">Cerrar Sesion</a></li>
+                <li><a class="dropdown-item" href="#" id="logOut"><i class='bx bx-power-off' ></i> Cerrar Sesion</a></li>
             </ul>
         </div>
     `;
@@ -333,8 +320,12 @@ logOut.addEventListener('click', () =>{
     ` ;
 })
 
-//Listeners de busqueda
-search.addEventListener('input', ()=> {
-    let newFilter = filtrar(books, search.value, 'title');
-    crearHTML(newFilter);
-});
+//Agregado de swal2 a parte
+const botonNombreUsuario = document.querySelector('#userNameBtn')
+botonNombreUsuario.addEventListener('click', ()=>{
+    Swal.fire({
+        icon: 'info',
+        title: 'En desarrollo',
+        text: 'Proximamente te redireccionara a tu perfil!',
+    })
+})
