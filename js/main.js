@@ -17,36 +17,64 @@ const getBooksAsync = async () => {
         await loadingBooks;
         crearHTML(books);
         //Listeners para los botones de añadir al carrito
-        const arrayBtns = document.querySelectorAll(".btn__compra");
-        arrayBtns.forEach((btn)=>{
-            btn.addEventListener('click', ()=>{
-                if (cart.length == 0 && localStorage.getItem('booksCart') != null) {
-                    cart = JSON.parse(localStorage.getItem('booksCart'))
-                }
-                const addBook = books.find((el)=> el.isbn == btn.id);
-                cart.push(addBook);
-                guardarLS(cart);
-                crearCart(cart);
-                Toastify({
-                    text: "Se agrego el libro al carrito",
-                    duration: 3000,
-                    position: "left",   
-                    style: {
-                        background: "rgb(30, 122, 11)"
-                    }, 
-                }).showToast();
-            });
-        });
         search.addEventListener('input', ()=> {
             loadingFilter();
             setTimeout (()=>{
                 let newFilter = filtrar(books, search.value, 'title');
                 if (newFilter.length > 0){
                     crearHTML(newFilter);
+                    const arrayBtns = document.querySelectorAll(".btn__compra");
+                    arrayBtns.forEach((btn)=>{
+                        btn.addEventListener('click', ()=>{
+                            console.log('el primero')
+                            if (cart.length == 0 && localStorage.getItem('booksCart') != null) {
+                                cart = JSON.parse(localStorage.getItem('booksCart'))
+                            }
+                            const addBook = books.find((el)=> el.isbn == btn.id);
+                            console.log(addBook);
+                            cart.push(addBook);
+                            console.log(cart);
+                            guardarLS(cart);
+                            crearCart(cart);
+                            Toastify({
+                                text: "Se agrego el libro '"+addBook.title+"' al carrito",
+                                duration: 3000,
+                                position: 'right',
+                                gravity: 'bottom', 
+                                style: {
+                                    background: "rgb(30, 122, 11)"
+                                }, 
+                            }).showToast();
+                        });
+                    });
                 }else{
                     errorMsgFilter();
                 }
-            },1000);
+            },1500);
+        });
+        const arrayBtns = document.querySelectorAll(".btn__compra");
+        arrayBtns.forEach((btn)=>{
+            btn.addEventListener('click', ()=>{
+                console.log('el primero')
+                if (cart.length == 0 && localStorage.getItem('booksCart') != null) {
+                    cart = JSON.parse(localStorage.getItem('booksCart'))
+                }
+                const addBook = books.find((el)=> el.isbn == btn.id);
+                console.log(addBook);
+                cart.push(addBook);
+                console.log(cart);
+                guardarLS(cart);
+                crearCart(cart);
+                Toastify({
+                    text: "Se agrego el libro '"+addBook.title+"' al carrito",
+                    duration: 3000,
+                    position: 'right',
+                    gravity: 'bottom', 
+                    style: {
+                        background: "rgb(30, 122, 11)"
+                    }, 
+                }).showToast();
+            });
         });
     }catch(error){
         // Si hay un error, llamo a la función errorMsgList()
@@ -65,14 +93,20 @@ getBooksAsync();
 //Mensaje de error lista
 function errorMsgList() {
     contenedor.innerHTML = `
-        <p class="loadingError">Ha ocurrido un error al cargar la pagina.<br>Le recomendamos esperar unos minutos antes de volver a entrar mientras solventamos esta crisis.</p>
+        <div class= "loadingError jsonError">
+            <img src="./img/error.png" class="loadingError__img" alt="error">
+            <p class="loadingError__text">Ha ocurrido un error al cargar la pagina.<br>Le recomendamos esperar unos minutos antes de volver a entrar mientras solventamos esta crisis.</p>
+        </div>
     `
 }
 
 //Mensaje de error filtro
 function errorMsgFilter() {
     contenedor.innerHTML =`
-        <p class="loadingError">No encontramos el libro que estas buscando</p>
+        <div class= "loadingError">
+            <img src="./img/error.png" class="loadingError__img" alt="error">
+            <p class="loadingError__text">No encontramos el libro que estas buscando</p>
+        </div>
     `
 }
 
@@ -253,7 +287,8 @@ function vaciarCart() {
         Toastify({
           text: 'Se eliminaron los libros del carrito',
           duration: 3000,
-          position: 'left',
+          position: 'right',
+          gravity: 'bottom',
           style: {
             background: '#a81120',
           },
@@ -267,9 +302,10 @@ function vaciarCart() {
         Toastify({
             text: 'Aun no agregaste nada al carrito',
             duration: 3000,
-            position: 'left',
+            position: 'right',
+            gravity: 'bottom',
             style: {
-              background: 'rgb(184, 181, 0)',
+              background: 'rgb(211, 208, 32)',
             },
           }).showToast();
     }
@@ -278,7 +314,6 @@ vaciarBotonCart.addEventListener('click', vaciarCart);
 
 //Reconstruccion del carrito al salir y volver a la vista principal
 if (localStorage.getItem('booksCart') != null && JSON.parse(localStorage.getItem('booksCart')).length > 0) {
-    console.log(cart);
     cart = JSON.parse(localStorage.getItem('booksCart'));
     crearCart(cart);
 };
