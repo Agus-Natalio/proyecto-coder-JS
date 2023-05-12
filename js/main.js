@@ -26,7 +26,6 @@ const getBooksAsync = async () => {
                     const arrayBtns = document.querySelectorAll(".btn__compra");
                     arrayBtns.forEach((btn)=>{
                         btn.addEventListener('click', ()=>{
-                            console.log('el primero')
                             if (cart.length == 0 && localStorage.getItem('booksCart') != null) {
                                 cart = JSON.parse(localStorage.getItem('booksCart'))
                             }
@@ -60,7 +59,6 @@ const getBooksAsync = async () => {
                     cart = JSON.parse(localStorage.getItem('booksCart'))
                 }
                 const addBook = books.find((el)=> el.isbn == btn.id);
-                console.log(addBook);
                 cart.push(addBook);
                 console.log(cart);
                 guardarLS(cart);
@@ -169,24 +167,6 @@ async function crearHTML(array) {
     }
     contenedor.innerHTML += html;
 };
-//Simulacion de carga mediante promesas
-/*let productos = []
-const cargaLibros = (arr)=>{
-    return new Promise((resolve, reject)=>{
-        setTimeout(()=>{
-            resolve(arr);
-        }, 1000);
-    });
-        cargaLibros(data)
-    .then((response)=>{
-        productos = response;
-        crearHTML(productos);
-    })
-    .catch(()=>{
-        errorMsg();
-    });
-};
-*/
 
 //Seguimos con funciones y listeners
 let totalPrice = 0;
